@@ -9,8 +9,10 @@ import org.springframework.stereotype.Component;
 
 import br.com.senac.model.Aluno;
 import br.com.senac.model.Curso;
+import br.com.senac.model.Professor;
 import br.com.senac.service.AlunoService;
 import br.com.senac.service.CursoService;
+import br.com.senac.service.ProfessorService;
 
 @Component
 public class Init implements ApplicationListener<ContextRefreshedEvent>{
@@ -19,6 +21,11 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 	AlunoService alunoService;
 	@Autowired
 	CursoService cursoService;
+	
+	@Autowired
+	ProfessorService professorService;
+	
+	
 	
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -34,17 +41,24 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		aluno3.setNome("Jose");
 		alunoService.salvar(aluno3);
 		
+		Curso curso = new Curso();
+		curso.setNome("SpringBoot");
+		
+		Professor professor = new Professor();
+		professor.setNome("Marcelo Estruc");
+		professorService.salvar(professor);
+		
+		curso.setProfessor(professor);
+		cursoService.salvar(curso);
+		
+		
+		
 		List<Aluno> alunos = alunoService.buscarTodosAlunos();
 		
 		for(Aluno aluno : alunos) {
 			System.out.println(aluno.getNome());
 		}
 		
-		Curso curso1 = new Curso();
-		curso1.setNome("Java");
-		cursoService.salvar(curso1);
-		Curso curso2 = new Curso();
-		curso2.setNome("Python");	
-		cursoService.salvar(curso2);
+		
 	}
 }

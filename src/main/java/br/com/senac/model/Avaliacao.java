@@ -1,29 +1,32 @@
 package br.com.senac.model;
 
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+
 @Entity
 public class Avaliacao {
+
+	@EmbeddedId
+	private AlunoCurso alunoCurso;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
 	private String conceito;
-	
-	public Integer getId() {
-		return id;
+
+	public AlunoCurso getAlunoCurso() {
+		return alunoCurso;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+
+	public void setAlunoCurso(AlunoCurso alunoCurso) {
+		this.alunoCurso = alunoCurso;
 	}
+
 	public String getConceito() {
 		return conceito;
 	}
+
 	public void setConceito(String conceito) {
 		this.conceito = conceito;
 	}
+	
 	
 	
 }

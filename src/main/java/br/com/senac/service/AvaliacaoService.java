@@ -10,6 +10,7 @@ import br.com.senac.repository.AvaliacaoRepository;
 
 @Service
 public class AvaliacaoService {
+	
 	@Autowired
 	AvaliacaoRepository avaliacaoRepository;
 	

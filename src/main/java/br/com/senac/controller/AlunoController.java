@@ -10,12 +10,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import br.com.senac.model.Aluno;
 import br.com.senac.service.AlunoService;
+import br.com.senac.service.TurmaService;
 
 @Controller
 @RequestMapping("aluno")
 public class AlunoController {
+	
 	@Autowired
 	private AlunoService alunoService;
+	
+	@Autowired
+	private TurmaService turmaService; 
 	
 	@GetMapping("/listarAlunos")
 	public ModelAndView listaTodosAlunos() {
@@ -28,6 +33,7 @@ public class AlunoController {
 	public ModelAndView cadastrarAluno() {
 		ModelAndView mv = new ModelAndView("aluno/cadastraAluno");
 		mv.addObject("aluno", new Aluno());
+		mv.addObject("turmas",turmaService.buscarTodasTurmas());
 		return mv;
 	}
 	

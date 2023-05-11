@@ -16,10 +16,22 @@
 			<form class="form-horizontal" th:object="${curso}" th:action="@{/curso/salvar}" method="POST" style="margin: 10px">
 				<div class="form-group">
 					<fieldset>
+						
 						<div class="form-group row">
 							<label>NOME</label>
 							<input type="text" class="form-control input-sm" th:field="*{nome}" autofocus="autofocus" placeholder="Informe o nome" maxlength="50" />
 						</div>
+						
+						<div class="form-group row">
+							<label>Professor</label>
+							<select class="form-control" th:field="*{professor}" >
+									<option value="0">Selecione o professor</option>
+									<option th:each="prof : ${professores}" th:value="${prof.id}" th:text="${prof.nome}"></option>
+							
+							</select>
+						
+						</div>
+													
 					</fieldset>
 				</div>
 				<div align="center">

@@ -16,6 +16,10 @@ public class CursoService {
 		return cursoRepository.findAll();
 	}
 	
+	public Curso buscarPorID(Integer id){
+		return cursoRepository.findById(id).get();
+	}
+	
 	public Curso salvar(Curso curso) {
 		return cursoRepository.save(curso);
 	}

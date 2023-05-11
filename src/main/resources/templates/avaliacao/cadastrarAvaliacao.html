@@ -3,32 +3,49 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Cadastro de Professor</title>
+<title>Cadastro de Aluno</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-	<header>
-		Home
-	</header>
 	<div class="container">
 		<div class="panel-heading" align="center">
-			<strong>CADASTRO DE PROFESSOR</strong>
+			<strong>CADASTRO DE AVALIAÇÃO</strong>
 		</div>
 		
 		<div class="panel-body border">
-			<form class="form-horizontal" th:object="${professor}" th:action="@{/professor/salvar}" method="POST" style="margin: 10px">
+			<form class="form-horizontal" th:object="${avaliacao}" th:action="@{/avaliacao/salvar}" method="POST" style="margin: 10px">
 				<div class="form-group">
 					<fieldset>
+									
 						<div class="form-group row">
-							<label>NOME</label>
-							<input type="text" class="form-control input-sm" th:field="*{nome}" autofocus="autofocus" placeholder="Informe o nome" maxlength="50" />
+							<label>Aluno</label>
+							<select class="form-control" th:field="*{alunoCurso.aluno}">
+								<option value="">Selecione um Aluno</option>
+								<option th:each="objAluno : ${alunos}" th:value="${objAluno.id}" 
+								th:text="${objAluno.nome}"></option>
+							</select>
+						</div>
+						
+						<div class="form-group row">
+						<label>Curso</label>
+						<select class="form-control" th:field="*{alunoCurso.curso}">
+							<option value="">Selecione um curso</option>
+							<option th:each="objCurso : ${cursos}" th:value="${objCurso.id}" 
+							th:text="${objCurso.nome}"></option>
+						</select>
+						
+						</div>
+						
+						<div class="form-group row">
+							<label>Conceito</label>
+							<input type="text" class="form-control input-sm" th:field="*{conceito}" 
+							autofocus="autofocus" placeholder="Informe o conceito" maxlength="50" />
 						</div>
 					</fieldset>
-					
 				</div>
 				<div align="center">
 				<button type="submit" class="btn btn-sm btn-success">Salvar</button>
-				<a th:href="@{/professor/listarProfessores}" class="btn btn-sm btn-default">CANCELAR</a>
+				<a th:href="@{/aluno/listarAlunos}" class="btn btn-sm btn-default">CANCELAR</a>
 				</div>
 			</form>
 		</div>

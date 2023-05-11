@@ -24,4 +24,8 @@ public class TurmaService {
 	public Turma atualizar(Turma turma) {
 		return turmaRepository.save(turma);
 	}
+	
+	public void deletarPorId(Integer id) {
+		turmaRepository.deleteById(id);
+	}
 }

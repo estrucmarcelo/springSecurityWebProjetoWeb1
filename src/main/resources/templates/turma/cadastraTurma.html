@@ -3,32 +3,39 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Cadastro de Professor</title>
+<title>Cadastro de Turma</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-	<header>
-		Home
-	</header>
 	<div class="container">
 		<div class="panel-heading" align="center">
-			<strong>CADASTRO DE PROFESSOR</strong>
+			<strong>CADASTRO DE TURMA</strong>
 		</div>
 		
 		<div class="panel-body border">
-			<form class="form-horizontal" th:object="${professor}" th:action="@{/professor/salvar}" method="POST" style="margin: 10px">
+			<form class="form-horizontal" th:object="${turma}" th:action="@{/turma/salvar}" method="POST" style="margin: 10px">
 				<div class="form-group">
 					<fieldset>
 						<div class="form-group row">
 							<label>NOME</label>
 							<input type="text" class="form-control input-sm" th:field="*{nome}" autofocus="autofocus" placeholder="Informe o nome" maxlength="50" />
 						</div>
+						
+						<div class="form-group row">
+							<label>Curso</label>
+							<!-- vai acontecer o for -->
+							<div th:each="objCurso : ${listaCursos}">
+								<input type="checkbox" th:field="*{cursos}" 
+								th:value="${objCurso.id}"/>
+								<label th:text="${objCurso.nome}"></label>	
+							</div> 
+						</div>
+						
 					</fieldset>
-					
 				</div>
 				<div align="center">
 				<button type="submit" class="btn btn-sm btn-success">Salvar</button>
-				<a th:href="@{/professor/listarProfessores}" class="btn btn-sm btn-default">CANCELAR</a>
+				<a th:href="@{/turma/listarTurmas}" class="btn btn-sm btn-default">CANCELAR</a>
 				</div>
 			</form>
 		</div>
