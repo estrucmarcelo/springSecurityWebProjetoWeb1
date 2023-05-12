@@ -1,5 +1,6 @@
 package br.com.senac.inicializacao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,11 +8,14 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import br.com.senac.domain.enums.Perfil;
 import br.com.senac.model.Aluno;
 import br.com.senac.model.Curso;
+import br.com.senac.model.Pessoa;
 import br.com.senac.model.Professor;
 import br.com.senac.service.AlunoService;
 import br.com.senac.service.CursoService;
+import br.com.senac.service.PessoaService;
 import br.com.senac.service.ProfessorService;
 
 @Component
@@ -25,6 +29,8 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 	@Autowired
 	ProfessorService professorService;
 	
+	@Autowired
+	PessoaService pessoaService;
 	
 	
 	@Override
@@ -58,6 +64,22 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 		for(Aluno aluno : alunos) {
 			System.out.println(aluno.getNome());
 		}
+		
+		List<Perfil> perfil = new ArrayList<>();
+		perfil.add(Perfil.USER);
+		
+		Pessoa p1 = new Pessoa();
+		p1.setNome("Estruc");
+		p1.setSenha("123");
+		p1.setPerfil(perfil);
+		pessoaService.create(p1);
+		
+		Pessoa p2 = new Pessoa();
+		p2.setNome("Lucas");
+		p2.setSenha("123");
+		
+		p2.setPerfil(perfil);
+		pessoaService.create(p2);
 		
 		
 	}
