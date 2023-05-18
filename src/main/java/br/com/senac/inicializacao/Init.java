@@ -1,6 +1,5 @@
 package br.com.senac.inicializacao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +7,6 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import br.com.senac.domain.enums.Perfil;
 import br.com.senac.model.Aluno;
 import br.com.senac.model.Curso;
 import br.com.senac.model.Pessoa;
@@ -65,20 +63,19 @@ public class Init implements ApplicationListener<ContextRefreshedEvent>{
 			System.out.println(aluno.getNome());
 		}
 		
-		List<Perfil> perfil = new ArrayList<>();
-		perfil.add(Perfil.USER);
+		
 		
 		Pessoa p1 = new Pessoa();
 		p1.setNome("Estruc");
 		p1.setSenha("123");
-		p1.setPerfil(perfil);
+		
 		pessoaService.create(p1);
 		
 		Pessoa p2 = new Pessoa();
 		p2.setNome("Lucas");
 		p2.setSenha("123");
 		
-		p2.setPerfil(perfil);
+		
 		pessoaService.create(p2);
 		
 		

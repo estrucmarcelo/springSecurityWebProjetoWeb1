@@ -12,20 +12,20 @@ public class PessoaDetails implements UserDetails {
 
 	private String nome;
 	private String senha;
-	private List perfis;
+	
 	
 	
 	public PessoaDetails(Pessoa pessoa) {
 		nome = pessoa.getNome();
 		senha = pessoa.getSenha();
-		perfis = pessoa.getPerfil();
+		
 	}
 	
 	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		
-		return (Collection<? extends GrantedAuthority>) this.perfis;
+		return (Collection<? extends GrantedAuthority>) null;
 	}
 
 	@Override

@@ -1,7 +1,5 @@
 package br.com.senac.model;
 
-import java.util.List;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,7 +14,7 @@ public class Pessoa {
 	
 	private String nome;
 	private String senha;
-	private List perfil;
+
 	
 	
 	public String getNome() {
@@ -31,12 +29,7 @@ public class Pessoa {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public List getPerfil() {
-		return perfil;
-	}
-	public void setPerfil(List perfil) {
-		this.perfil = perfil;
-	}
+	
 	public Integer getId() {
 		return id;
 	}
