@@ -27,7 +27,7 @@ public class PessoaService {
 	public Pessoa create(Pessoa pessoa) {
 		
 		pessoa.setSenha(encoder.encode(pessoa.getSenha()));
-		List perfil = new ArrayList();
+		
 		
 		return pessoaRepository.save(pessoa);
 	}

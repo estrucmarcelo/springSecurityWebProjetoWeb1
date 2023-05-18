@@ -27,6 +27,8 @@ public class SecurityConfig {
 		.securityMatcher("/**")
 		.authorizeHttpRequests()
 		.requestMatchers(HttpMethod.GET,"/curso/listarCursos").permitAll()
+		.requestMatchers("/h2-console/**").permitAll()
+		.requestMatchers("/console/**").permitAll()
 		.requestMatchers("/curso/cadastrar").hasRole("USER")
 		.anyRequest()
 		.authenticated()
